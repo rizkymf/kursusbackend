@@ -13,6 +13,8 @@ public interface SiswaService {
 
     List<Siswa> siswaTerdaftar();
 
+    List<Siswa> siswaAktif(Boolean active);
+
     List<Siswa> siswaKelas(String kodeKelas);
 
 }

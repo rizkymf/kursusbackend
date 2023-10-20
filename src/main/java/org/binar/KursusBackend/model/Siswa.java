@@ -4,15 +4,21 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Data
 @Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Siswa {
 
     @Id
@@ -25,10 +31,12 @@ public class Siswa {
     private String noHp;
     private String email;
     private String jenisKelamin;
-    private String level;
+    private int level;
+    private Boolean active;
 
     @ManyToOne
     @JoinColumn(name = "kode_kelas")
+    @Cascade(CascadeType.ALL)
     private Kelas kelas;
 
 }
